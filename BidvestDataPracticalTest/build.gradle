@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+
+description = 'Student Management Console'
+    group = 'za.co.bidvestdata'
+
+mainClassName = 'za.co.bidvestdata.main.Main'
+
+tasks.jar {
+    manifest.attributes['Main-Class'] = mainClassName
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testImplementation     'junit:junit:4.13'
+}
