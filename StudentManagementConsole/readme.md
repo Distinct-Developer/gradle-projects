@@ -2,7 +2,7 @@
 Boiki Mphore
 
 ## Email
-boiki@distincttech.co.za
+developer@distincttech.co.za
 
 ## Run app instructions
 Open the project base directory in cmd or terminal.
