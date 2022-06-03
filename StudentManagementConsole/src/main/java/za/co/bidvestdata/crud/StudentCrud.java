@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import za.co.bidvestdata.models.Student;
 
 /**
@@ -161,6 +162,12 @@ public class StudentCrud {
             if (studentList != null && !studentList.isEmpty()) {
                 System.out.println("\nAll students details:");
                 printAllStudentDetails(studentList);
+                
+                List<Student> studentsByAge = studentList.stream()
+                        .filter(student -> student.getAge() >= 20)
+                        .collect(Collectors.toList());
+                System.out.println("\nAll students by age >= 20:");
+                printAllStudentDetails(studentsByAge);
             }
         }
     }
@@ -177,9 +184,9 @@ public class StudentCrud {
         String dataFormat = "%1$-12s %2$-15s %3$-20s %4$-10s %5$-15s\n";
         System.out.format(dataFormat, "STUDENT ID", "NAME", "SURNAME", "AGE", "CURRICULUM");
 
-        for (Student student : studentList) {
+        studentList.forEach(student -> {
             System.out.format(dataFormat, student.getId(), student.getName(), student.getSurname(), student.getAge(), student.getCurriculum());
-        }
+        });
     }
 
     private Student getStudentDetailsFromFile(Path filePath) {
